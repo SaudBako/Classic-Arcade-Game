@@ -36,10 +36,12 @@ var Engine = (function(global) {
         grass: 'images/grass-block.png',
     }
 
-    const maxWidth = blockWidth * numCols;
-    const altCanvasRatio = 10 / 16;
+    const maxWidth = blockWidth * numCols; //Maximum width for the canvas
+    const altCanvasRatio = 10 / 16; //Ratio when scaling canvas
 
     doc.body.appendChild(canvas);
+
+    //This side element shows up on larger screens
     const sideEl = document.querySelector('main');
     
     /*
@@ -67,7 +69,7 @@ var Engine = (function(global) {
         global.scale = canvas.width / (maxWidth);
     }
 
-    win.onresize = resize;
+    win.onresize = resize; //Resizes the canvas whenever the page is resized
     
     resize();
 

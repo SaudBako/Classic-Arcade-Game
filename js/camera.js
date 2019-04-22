@@ -1,5 +1,7 @@
+//This program controls the canvas view of the game
+
 (function() {
-    let yTranslation;
+    let yTranslation; //Translation of canvas that reaches the player
     const yTranslationOffset = 4 * blockHeight + 36;
 
     followPlayer = function() {

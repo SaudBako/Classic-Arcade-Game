@@ -1,5 +1,6 @@
 /*
-    Controls game logic.
+    This file initializes entities, background, and controls game logic.
+
 */
 
 //Used for determining entitys' size and step length
