@@ -1,8 +1,11 @@
+* {
+    touch-action: none;
+}
+
 body {
     background: lightgrey;
     margin: 0;
     display: flex;
-    touch-action: none;
 }
 
 canvas {
