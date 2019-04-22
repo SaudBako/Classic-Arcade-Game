@@ -40,7 +40,7 @@ var Engine = (function(global) {
     const altCanvasRatio = 10 / 16;
 
     doc.body.appendChild(canvas);
-    const sideEl = document.querySelector('#main');
+    const sideEl = document.querySelector('main');
     
     /*
      * Resizes the game depending on screen size.

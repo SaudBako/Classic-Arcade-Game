@@ -111,6 +111,8 @@ class Player extends Entity {
 
         if (Player.reachesGoal(newPosition)) {
             this.moveToStart();
+        } else if (Player.hitsWater(newPosition.y)) {
+            this.moveToStart();
         }
         else if (!Player.hitsRock(newPosition) && Player.withinGameArea(newPosition)) {
             this.move(newPosition.x, newPosition.y);
@@ -169,6 +171,10 @@ Player.initialPosition = 4;
 
 Player.reachesGoal = function({x, y}) {
     return x == goal.x && y == goal.y;
+}
+
+Player.hitsWater = function(y) {
+    return y < numEndBlocks * blockHeight;
 }
 
 Player.withinGameArea = function({x, y}) {

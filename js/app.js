@@ -6,9 +6,11 @@
 const blockWidth = 101;
 const blockHeight = 83;
 
+//Beginning and trailing blocks outside move area
 const numEndBlocks = 5;
 const numStartBlocks = 5;
 
+//Overall design of the game
 let levelDesign = [
     [numEndBlocks, 'water'],
     [3, 'grass'],
@@ -20,14 +22,16 @@ let levelDesign = [
     [numStartBlocks, 'grass']
 ];
 
+//Names of the images rendered for each row
 let rowImages = [];
-
+//Unpacks level design into row images
 for (rows of levelDesign) {
     for (let row = 0; row < rows[0]; row++) {
         rowImages.push(rows[1]);
     }
 }
 
+//Number of row and col blocks
 let numRows = rowImages.length;
 const numCols = 5;
 
@@ -46,10 +50,10 @@ const allRocks = [
     new Rock(3, 7)
 ];
 let allGems;
-
 const player = new Player();
 const goal = new Goal(2, numEndBlocks);
 
+//Fills allEnemies with enemies on each stone row
 function makeEnemies() {
     allEnemies.length = 0;
     for (let row = numEndBlocks; row < rowImages.length; row++) {
@@ -59,6 +63,7 @@ function makeEnemies() {
     }
 }
 
+//Makes gems in a designed pattern
 function makeGems() {
     allGems = [
         new Gem(4, 14),
@@ -70,12 +75,14 @@ function makeGems() {
     ];
 }
 
+//Makes rocks bounding lower of the move area
 function makeBoundingRocks() {
     for (let col = 0; col < numCols; col++) {
         allRocks.push(new Rock(col, numRows - 3));
     }
 }
 
+//Fills intities arrays
 makeEnemies();
 makeBoundingRocks();
 makeGems();
