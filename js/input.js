@@ -48,5 +48,5 @@
 
             e.preventDefault();
         }
-    );
+    , {passive: false});
 })();
