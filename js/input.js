@@ -26,7 +26,7 @@
             e.preventDefault();
         }
     );
-    document.addEventListener('touchmove', e => e.preventDefault());
+    document.addEventListener('touchmove', function() {e.preventDefault()}, {passive: false});
     document.addEventListener('touchend',
         function(e) {
             let distX = e.changedTouches[0].clientX - startX;
