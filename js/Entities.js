@@ -76,6 +76,7 @@ class Enemy extends Entity {
         this.x + blockWidth > player.Collider.x &&
         this.y < player.y + blockHeight &&
         this.y + blockHeight > player.y) {
+            lost();
             player.moveToStart();
         }
     }
@@ -187,7 +188,12 @@ Player.reachesGoal = function({x, y}) {
 
 //@returns true if the provided position is less than water blocks height
 Player.hitsWater = function(y) {
-    return y < numEndBlocks * blockHeight;
+    if (y < numEndBlocks * blockHeight) {
+        lost();
+        return true;
+    }
+    
+    return false;
 }
 
 //@returns true if the provided position is inside the game area
@@ -209,6 +215,7 @@ Player.hitsGem = function ({x, y}) {
     for (let indx = 0; indx < allGems.length; indx++) {
         if (x == allGems[indx].x && y == allGems[indx].y) {
             allGems.splice(indx, 1);
+            gemCollected();
         }
     }
 }

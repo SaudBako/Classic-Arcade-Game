@@ -1,6 +1,9 @@
 /*
     This file initializes entities, background, and controls game logic.
 
+    2- La nega'yah
+    3- score
+    4- Main menu
 */
 
 //Used for determining entitys' size and step length

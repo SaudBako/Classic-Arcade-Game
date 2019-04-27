@@ -73,7 +73,7 @@ var Engine = (function(global) {
     win.onresize = resize; //Resizes the canvas whenever the page is resized
     
     resize();
-
+    
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
      */
@@ -86,11 +86,12 @@ var Engine = (function(global) {
          */
         var now = Date.now(),
             dt = (now - lastTime) / 1000.0;
-
+        
         /* Call our update/render functions, pass along the time delta to
          * our update function since it may be used for smooth animation.
          */
         update(dt);
+        cameraFollowPlayer();
         render();
         
         /* Set our lastTime variable which is used to determine the time delta
@@ -111,6 +112,7 @@ var Engine = (function(global) {
     function init() {
         reset();
         lastTime = Date.now();
+        setCameraToPlayer();
         main();
     }
 
@@ -125,7 +127,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        //checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the
@@ -140,7 +142,6 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update(dt);
-        followPlayer();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -171,6 +172,7 @@ var Engine = (function(global) {
         }
 
         renderEntities();
+        UIRender();
     }
 
     /* This function is called by the render function and is called on each game
