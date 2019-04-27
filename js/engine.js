@@ -66,7 +66,8 @@ var Engine = (function(global) {
 
         global.canvasHeight = canvas.height;
 
-        global.scale = canvas.width / (maxWidth);
+        scale = canvas.width / (maxWidth);
+        ctx.scale(scale, scale);
     }
 
     win.onresize = resize; //Resizes the canvas whenever the page is resized
@@ -110,7 +111,6 @@ var Engine = (function(global) {
     function init() {
         reset();
         lastTime = Date.now();
-        followPlayer();
         main();
     }
 
