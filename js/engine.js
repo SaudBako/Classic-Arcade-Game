@@ -27,6 +27,12 @@ var Engine = (function(global) {
         spaceBelowImage = 60;
         restOfBlock = 171 - blockHeight - spaceAboveImage - spaceBelowImage;
     
+    /* Assign the canvas' context object to the global variable (the window
+     * object when run in a browser) so that developers can use it more easily
+     * from within their app.js files.
+     */
+    global.ctx = ctx;
+
     /* This object holds the relative URLs to the images used
     * the game.
     */
@@ -68,6 +74,7 @@ var Engine = (function(global) {
 
         scale = canvas.width / (maxWidth);
         ctx.scale(scale, scale);
+        setCameraToPlayer();
     }
 
     win.onresize = resize; //Resizes the canvas whenever the page is resized
@@ -112,7 +119,6 @@ var Engine = (function(global) {
     function init() {
         reset();
         lastTime = Date.now();
-        setCameraToPlayer();
         main();
     }
 
@@ -222,10 +228,4 @@ var Engine = (function(global) {
         'images/Rock.png'
     ]);
     Resources.onReady(init);
-
-    /* Assign the canvas' context object to the global variable (the window
-     * object when run in a browser) so that developers can use it more easily
-     * from within their app.js files.
-     */
-    global.ctx = ctx;
 })(this);

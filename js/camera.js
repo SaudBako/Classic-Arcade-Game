@@ -15,13 +15,8 @@
         yDiff = newYTranslation - yTranslation;
         yDiffTranslation = yDiff / blockHeight;
 
-        if (yDiff > 0) {
-            yTranslation += yDiffTranslation;
-            ctx.translate(0, yDiffTranslation);
-        } else if (yDiff < 0) {
-            yTranslation += yDiffTranslation;
-            ctx.translate(0, yDiffTranslation);
-        }
+        yTranslation += yDiffTranslation;
+        ctx.translate(0, yDiffTranslation);
     };
 
     getNewPosition = () =>

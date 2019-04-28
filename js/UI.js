@@ -2,7 +2,7 @@
 
     let gems = 0;
     let loses = 0;
-
+    
     gemCollected = function() {
         gems++;
     }
